@@ -1,13 +1,35 @@
 package com.bigdata2017.mysite.vo;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserVo {
+	
 	private Long no;
-	private String name;
+	
+	@NotEmpty
+	@Length( min=2, max=5 )
+	private String name; // 값을 받는데 이름이 비어있으면 에러
+	
+	@NotEmpty
+	@Pattern(regexp="^[0-9a-zA-Z]{4,8}$") // 정규표현식
 	private String password;
-	private String email;
+	
+	@Email
+	//@Pattern(regexp="^[0-9a-zA-Z]+$" ~~~~~)  패턴 == @Email 
+	private String email; // Hibernate에서 Email 을 지원해줌
+	
+	//@Pattern(regexp="^(FEMALE|MALE)$")
 	private String gender;
+	
 	private String joinDate;
+	
 	private String role;
+	
+	
 	public Long getNo() {
 		return no;
 	}

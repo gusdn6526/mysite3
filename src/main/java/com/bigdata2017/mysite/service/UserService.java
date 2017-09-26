@@ -32,4 +32,7 @@ public class UserService {
 	public boolean modifyUser( UserVo userVo ) {
 		return userDao.update(userVo) == 1;
 	}
+	
+	
+	
 }
